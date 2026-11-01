@@ -1,28 +1,30 @@
 ---
+// 首页layout 配置 
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { ArticleList } from "@/components/article-list"
 import { Footer } from "@/components/footer"
 import SiteHeader from "@/components/site-header.astro"
-import { Hero } from "@/components/hero"
 import { PAGE_SIZE } from "@/lib/constants"
 import { buildSidebarMeta, getSortedPosts, toPostMeta } from "@/lib/posts"
-import { getSortedThoughts, toThoughtPreview } from "@/lib/thoughts"
+// 注释了可思
+// import { getSortedThoughts, toThoughtPreview } from "@/lib/thoughts"
 
 const title = "时歌的博客 | Boundary of Thought"
-const description = "探索金融、社会与人工智能的交汇点"
 const posts = await getSortedPosts()
 const allArticles = posts.map((post) => toPostMeta(post))
 const sidebarMeta = buildSidebarMeta(allArticles)
-const thoughts = await getSortedThoughts()
-const thoughtPreviews = thoughts.map((thought) => toThoughtPreview(thought)).slice(0, 4)
+// const thoughts = await getSortedThoughts()
+// const thoughtPreviews = thoughts.map((thought) => toThoughtPreview(thought)).slice(0, 4)
 ---
 
-<BaseLayout {title} {description} fontProfile="interface">
+<BaseLayout {title} fontProfile="interface">
   <div class="min-h-screen bg-background dark:bg-surface-subtle">
     <SiteHeader />
-    <main>
-      <Hero client:idle />
+    <main class="pt-12">
       <section id="home-main" class="scroll-mt-24">
+        <!-- 偶得预览暂时隐藏。恢复时取消顶部相关代码的注释，并将这一属性加回下方 ArticleList：
+          sidebarThoughts={thoughtPreviews}
+        -->
         <ArticleList
           client:visible
           articles={allArticles}
@@ -31,7 +33,6 @@ const thoughtPreviews = thoughts.map((thought) => toThoughtPreview(thought)).sli
           pagination={{ currentPage: 1, pageSize: PAGE_SIZE, basePath: "/" }}
           sidebarCategories={sidebarMeta.categories}
           sidebarTags={sidebarMeta.tags}
-          sidebarThoughts={thoughtPreviews}
         />
       </section>
     </main>

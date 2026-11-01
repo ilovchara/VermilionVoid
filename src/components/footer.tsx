@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from "react"
-import { Github, Music, Rss } from "lucide-react"
+import { Github, Music } from "lucide-react"
 import { profile, type ExternalProfileLink, type ExternalProfileLinkType } from "@/data/profile"
 import { QqIcon } from "@/components/icons/qq-icon"
 
@@ -9,109 +9,93 @@ const iconMap: Record<ExternalProfileLinkType, ComponentType<SVGProps<SVGSVGElem
   github: Github,
 }
 
+// 页脚编辑
+// 网站上线时间（北京时间）；修改这里即可调整运行计时的起点。
+const siteStartTime = "2026-11-01T00:00:00+08:00"
+
+const footerNavItems: { name: string; href: string; external?: boolean }[] = [
+  { name: "首页", href: "/" },
+  { name: "时间线", href: "/timeline/" },
+  { name: "书架", href: "/bookshelf/" },
+  { name: "专题", href: "/studies/" },
+  { name: "关于", href: "/about/" },
+
+  // { name: "友链", href: "/friends/" },
+  // { name: "开往", href: "https://www.travellings.cn/go.html", external: true },
+]
+
 export function Footer() {
   return (
     <footer className="border-t border-border/50 bg-background">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-3">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-full overflow-hidden border border-primary/20 bg-secondary">
-                <img
-                  src={profile.avatar}
-                  alt={profile.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <span className="text-foreground font-medium">时歌的博客</span>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              理解以真实为本，但真实本身并不会自动呈现
+      <div className="max-w-6xl mx-auto px-6 pt-12 pb-6 md:pt-14 md:pb-8">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
+          {/* 左侧：站点介绍 */}
+          <div className="col-span-2 md:col-span-1">
+            <a
+              href="/"
+              className="inline-block font-serif text-3xl font-bold tracking-tight text-primary transition-opacity hover:opacity-80"
+            >
+              朱墨<span className="text-black dark:text-white">留白</span>
+            </a>
+            <p className="mt-3 max-w-72 font-serif text-sm leading-relaxed text-muted-foreground">
+              {profile.bio}
             </p>
           </div>
 
-          {/* Navigation */}
-          <div className="md:flex md:justify-center">
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-4 uppercase tracking-wide">导航</h4>
-              <nav className="flex flex-col gap-3">
-              {[
-                { name: "首页", href: "/" },
-                { name: "时间线", href: "/timeline/" },
-                { name: "书架", href: "/bookshelf/" },
-                { name: "专题", href: "/studies/" },
-                { name: "友链", href: "/friends/" },
-                { name: "关于", href: "/about/" },
-                { name: "开往", href: "https://www.travellings.cn/go.html", external: true },
-              ].map((item) => (
+          {/* 中间：导航 */}
+          <div className="md:justify-self-center">
+            <h4 className="mb-4 text-xs font-medium tracking-widest text-foreground">导航</h4>
+            <nav aria-label="页脚导航" className="flex flex-col items-start gap-2.5">
+              {footerNavItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noreferrer" : undefined}
-                  className="text-muted-foreground text-sm hover:text-foreground transition-colors duration-200"
+                  className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
-            </div>
           </div>
 
-          {/* Connect */}
-          <div className="md:flex md:justify-end">
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-4 uppercase tracking-wide">联系</h4>
-              <div className="flex items-center gap-4">
-                {profile.links.filter((link): link is ExternalProfileLink => link.type !== "wechat").map((link) => {
-                  const Icon = iconMap[link.type]
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-200"
-                      aria-label={link.name}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  )
-                })}
-              </div>
-              <p className="text-muted-foreground text-sm mt-6">通过 RSS 订阅，获取最新文章更新。</p>
-              <a
-                href="/rss.xml"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity duration-200"
-              >
-                <Rss className="w-4 h-4" />
-                订阅 RSS
-              </a>
+          {/* 右侧：联系方式 */}
+          <div className="md:justify-self-end">
+            <h4 className="mb-4 text-xs font-medium tracking-widest text-foreground">联系</h4>
+            <div className="-ml-2 flex flex-wrap items-center gap-1">
+              {profile.links.filter((link): link is ExternalProfileLink => link.type !== "wechat").map((link) => {
+                const Icon = iconMap[link.type]
+                return (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors duration-200 hover:text-primary"
+                    aria-label={link.name}
+                    title={link.name}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-border/50 grid gap-4 md:grid-cols-3">
-          <p className="text-muted-foreground text-sm">© 2025 时歌. All rights reserved.</p>
-          <a
-            href="https://beian.miit.gov.cn/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-muted-foreground text-xs hover:text-foreground transition-colors duration-200 md:text-center"
-          >
-            辽ICP备2023010881号-1
-          </a>
+        <div className="mt-10 pt-6 border-t border-border/50 grid items-center gap-3 md:mt-12 md:grid-cols-3 md:gap-4">
+          <p className="text-muted-foreground text-xs">© 2026 猹 Όλα θα πάνε καλά...</p>
+          <p className="text-muted-foreground text-xs tabular-nums md:text-center" role="timer" aria-live="off">
+            网站已运行{" "}
+            <span data-site-uptime data-start={siteStartTime}>正在计算…</span>
+          </p>
           <a
             href="https://github.com/Lapis0x0/VermilionVoid"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 text-muted-foreground text-xs hover:text-foreground transition-colors duration-200 group md:justify-end md:pr-4"
+            className="flex items-center gap-2 text-muted-foreground text-xs hover:text-primary transition-colors duration-200 md:justify-end"
           >
             <Github className="w-3.5 h-3.5" />
             <span>博客主题：朱墨留白 | VermilionVoid</span>

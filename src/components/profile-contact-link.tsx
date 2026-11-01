@@ -1,3 +1,4 @@
+// 首页信息
 "use client"
 
 import { Github, Music } from "lucide-react"

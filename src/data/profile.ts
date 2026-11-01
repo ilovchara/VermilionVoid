@@ -1,3 +1,4 @@
+// 首页信息
 export type ExternalProfileLinkType = "qq" | "music" | "github"
 export type ProfileLinkType = ExternalProfileLinkType | "wechat"
 
@@ -23,8 +24,8 @@ export const profile: {
   avatar: string
   links: ProfileLink[]
 } = {
-  name: "时歌",
-  bio: "理解以真实为本，但真实本身并不会自动呈现",
+  name: "Chara",
+  bio: "生命本身，就是没有意义的重复",
   avatar: "/avatar.webp",
   links: [
     {

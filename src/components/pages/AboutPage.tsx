@@ -1,3 +1,4 @@
+// 关于 页面
 import { MapPin, Heart } from "lucide-react"
 import { profile } from "@/data/profile"
 import { ProfileContactLink } from "@/components/profile-contact-link"

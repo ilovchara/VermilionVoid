@@ -1,3 +1,4 @@
+// qq标识 icon
 import type { SVGProps } from "react"
 
 export function QqIcon(props: SVGProps<SVGSVGElement>) {

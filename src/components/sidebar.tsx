@@ -1,3 +1,4 @@
+// 首页信息
 "use client"
 
 import { useState, type ReactNode } from "react"
@@ -72,7 +73,7 @@ export function Sidebar({
         <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border/50">
           <span className="flex items-center gap-1">
             <Calendar className="w-3 h-3" />
-            正在空降：超级地球
+            我们随时可能都会死去，所以我们要珍惜每一天每一秒
           </span>
         </div>
       </div>
