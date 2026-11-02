@@ -9,7 +9,7 @@ import { buildSidebarMeta, getSortedPosts, toPostMeta } from "@/lib/posts"
 // 注释了可思
 // import { getSortedThoughts, toThoughtPreview } from "@/lib/thoughts"
 
-const title = "时歌的博客 | Boundary of Thought"
+const title = "Chara的博客 | Boundary of Thought"
 const posts = await getSortedPosts()
 const allArticles = posts.map((post) => toPostMeta(post))
 const sidebarMeta = buildSidebarMeta(allArticles)
