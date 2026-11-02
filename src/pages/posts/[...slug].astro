@@ -32,7 +32,7 @@ const minutes = remarkPluginFrontmatter?.minutes
 const normalizeText = (text: string) => text.replace(/\s+/g, " ").trim()
 const buildMetaDescription = (primary: string, fallback: string, title: string, encrypted: boolean) => {
   const preferred = normalizeText(primary)
-  const backup = normalizeText(fallback)
+  const backup = encrypted ? "" : normalizeText(fallback)
 
   // 手写 description 优先；没有才用正文摘要，摘要太短再退回标题
   let result = preferred
@@ -108,7 +108,7 @@ if (post.data.encrypted && post.data.password) {
     ))}
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
   </Fragment>
-  <div class="min-h-screen bg-background dark:bg-surface-subtle">
+  <div class="site-shell bg-background dark:bg-surface-subtle">
     <SiteHeader />
     <ArticleContent post={post} {Content} {words} {minutes}>
       <div class="mb-8">

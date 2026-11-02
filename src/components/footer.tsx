@@ -16,8 +16,10 @@ const siteStartTime = "2026-11-01T00:00:00+08:00"
 const footerNavItems: { name: string; href: string; external?: boolean }[] = [
   { name: "首页", href: "/" },
   { name: "时间线", href: "/timeline/" },
-  { name: "书架", href: "/bookshelf/" },
+  // 书架重新设计期间暂时隐藏入口。
+  // { name: "书架", href: "/bookshelf/" },
   { name: "专题", href: "/studies/" },
+  { name: "工作", href: "/work/" },
   { name: "关于", href: "/about/" },
 
   // { name: "友链", href: "/friends/" },
@@ -26,7 +28,7 @@ const footerNavItems: { name: string; href: string; external?: boolean }[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-background">
+    <footer className="site-footer border-t border-border/50 bg-background">
       <div className="max-w-6xl mx-auto px-6 pt-12 pb-6 md:pt-14 md:pb-8">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
           {/* 左侧：站点介绍 */}

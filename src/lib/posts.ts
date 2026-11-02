@@ -57,7 +57,9 @@ export const toPostMeta = (post: PostEntry) => {
   const words = stats.words
   const minutes = Math.max(1, Math.round(stats.minutes))
   const excerptSource = post.data.description?.trim() || ""
-  const fallbackExcerpt = stripMarkdown(body).slice(0, 140)
+  const fallbackExcerpt = post.data.encrypted
+    ? "此文章已加密，输入密码后阅读。"
+    : stripMarkdown(body).slice(0, 140)
   const excerpt = excerptSource.length > 0 ? excerptSource : fallbackExcerpt
   const tags = post.data.tags?.length ? post.data.tags : []
   const category = (post.data.category ?? "").toString().trim() || "未分类"

@@ -87,6 +87,8 @@ draft: false               # 草稿不会被构建
 
 **加密文章**：给 frontmatter 加上 `encrypted: true` 和 `password: "你的密码"`，该文章正文会被加密，需输入密码才能阅读。适合半公开的内容。
 
+顶部导航的「工作」（`/work/`）会自动汇总所有加密文章，无需另设分类。目录中的标题、日期和手写 `description` 公开可见，正文仍逐篇输入原密码后阅读；不填写 `description` 时显示统一的加密提示，不从正文截取摘要。`draft: true` 的文章仅本地预览可见，正式构建时不发布。首页和时间线仍保留原有文章入口。
+
 **免责声明**：`disclaimer` 字段可以引用 `src/data/disclaimers.ts` 里预设的声明文案。
 
 ### `thoughts` —— 碎碎念

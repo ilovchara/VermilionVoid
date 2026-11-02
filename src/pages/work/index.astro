@@ -1,0 +1,69 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import SiteHeader from "@/components/site-header.astro"
+import { Footer } from "@/components/footer"
+import { getSortedPosts } from "@/lib/posts"
+
+const title = "工作 | 朱墨留白"
+const description = "工作中的记录、思考与复盘。文章内容需输入密码后阅读。"
+// 沿用文章集合的草稿规则：本地可预览，正式构建只收录已发布文章。
+const posts = (await getSortedPosts(true)).filter((post) => post.data.encrypted)
+---
+// 文件路由 Astro它会根据 src/pages/ 里的文件位置，自动决定网页地址。
+<BaseLayout {title} {description} robots="noindex, follow" fontProfile="interface">
+  <div class="site-shell bg-background dark:bg-surface-subtle" data-pagefind-ignore>
+    <SiteHeader />
+    <main class="pt-32 pb-16 sm:pt-36">
+      <div class="max-w-4xl mx-auto px-6">
+        <header class="mb-8 border-b border-border pb-7">
+          <p class="mb-3 font-display-serif text-xs tracking-widest text-primary">WORK</p>
+          <h1 class="font-serif-cn text-3xl sm:text-4xl font-semibold tracking-tight">工作</h1>
+          <p class="mt-4 text-sm leading-7 text-content-secondary">{description}</p>
+          <p class="mt-4 text-xs text-muted-foreground">共 {posts.length} 篇加密文章</p>
+        </header>
+
+        {posts.length > 0 ? (
+          <ul class="divide-y divide-border/60" aria-label="工作文章">
+            {posts.map((post) => (
+              <li>
+                <a
+                  href={encodeURI(`/posts/${post.id}/`)}
+                  class="group flex items-start gap-4 rounded-md py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                >
+                  <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-muted-foreground" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="5" y="10" width="14" height="11" rx="2" />
+                      <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3" />
+                    </svg>
+                  </span>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2">
+                      <h2 class="break-words text-lg font-medium transition-colors group-hover:text-primary">{post.data.title}</h2>
+                      <time class="shrink-0 font-mono text-xs text-muted-foreground" datetime={post.data.published.toISOString()}>
+                        {post.data.published.toISOString().slice(0, 10)}
+                      </time>
+                    </div>
+                    <p class="mt-2 break-words text-sm leading-7 text-content-secondary">
+                      {post.data.description.trim() || "此文章已加密，输入密码后阅读。"}
+                    </p>
+                    <p class="mt-3 text-xs text-muted-foreground">
+                      密码保护{post.data.draft ? " · 草稿预览" : ""}
+                    </p>
+                  </div>
+                  <span class="mt-2 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="py-16 text-center">
+            <h2 class="font-serif-cn text-xl">工作记录，慢慢积累。</h2>
+            <p class="mt-3 text-sm text-muted-foreground">这里暂时还没有发布的加密文章。</p>
+            <a class="mt-6 inline-block text-sm text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring" href="/">返回首页 →</a>
+          </div>
+        )}
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

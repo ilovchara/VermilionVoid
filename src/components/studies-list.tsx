@@ -452,19 +452,6 @@ export function StudiesList({ studies }: { studies: Study[] }) {
 
         {mode === "index" ? <IndexView studies={studies} /> : <TimelineView studies={studies} />}
 
-        {/* 末尾 */}
-        <div
-          className="mx-auto font-serif-cn text-[13px] text-muted-foreground leading-[1.8] text-center"
-          style={{ maxWidth: 720, marginTop: 72, paddingTop: 28, paddingBottom: 28, borderTop: "1px solid var(--border)" }}
-        >
-          <div
-            className="text-[11px] text-muted-foreground/80 mb-2.5 uppercase"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "0.18em" }}
-          >
-            Colophon
-          </div>
-          专题不追求结论。一个课题搁置了，并不意味着它失败——也许只是时机未到。
-        </div>
       </div>
     </div>
   )

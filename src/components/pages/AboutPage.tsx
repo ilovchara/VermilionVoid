@@ -5,7 +5,7 @@ import { ProfileContactLink } from "@/components/profile-contact-link"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background dark:bg-surface-subtle">
+    <div className="site-content bg-background dark:bg-surface-subtle">
       <main className="pt-32 pb-8">
         <div className="max-w-4xl mx-auto px-6">
           {/* Hero Section */}
