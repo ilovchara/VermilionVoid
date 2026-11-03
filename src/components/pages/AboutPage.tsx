@@ -1,4 +1,3 @@
-// 关于 页面
 import { MapPin, Heart } from "lucide-react"
 import { profile } from "@/data/profile"
 import { ProfileContactLink } from "@/components/profile-contact-link"
@@ -68,26 +67,24 @@ export default function AboutPage() {
               prose-li:marker:text-primary prose-li:my-1.5"
             >
               <blockquote>
-                理解以真实为本，但真实本身并不会自动呈现
+                生命就是无意义的重复
               </blockquote>
-              <p>
-                你好，我叫时歌，也可以叫我 Lapis0x0。
-              </p>
-              <p>
-                2004年出生在河南，在大山中长大。
-              </p>
-              <p>
-                可能是因为我从小性格就较为安静，因此有幸在最好奇的年龄读了很多杂七杂八的书；又因为喜欢打游戏，好让游戏能顺利跑起来而被迫自学计算机知识。这两件事不知不觉帮我训练出了一种跨学科的直觉，后来不管是学习、研究还是设计写代码，这种直觉都会冒出来且经常比我预想的有用。
-              </p>
-              <p>
-                我说不太清楚它到底是什么，但我很喜欢它的存在，像是少年时的自己悄悄留给现在的礼物。
-              </p>
-              <p>
-                我当过一段时间的老师，上一份工作是量化策略研究员。现在业余的大部分精力在维护一个叫 <a href="https://github.com/Lapis0x0/obsidian-yolo" target="_blank" rel="noopener noreferrer">YOLO</a> 的开源项目，它是一个 Obsidian AI 插件。我始终认为，鉴于 LLM 的潜能，它不应该仅仅止于被我们督促去做一些事情，它本可以在茫茫识海中自由穿梭，把你曾经记下的知识碎片、曾经习得的写作风格、曾经积累的对世界的理解融会贯通，生成真正流畅而自主的内容，做一些更有趣有价值的事情——这也就是 YOLO 想去探寻的方向。
-              </p>
-              <p>个人兴趣：</p>
-              <p>对世界充满兴趣，也总是心怀戒备。</p>
+
+              <p>没什么特别的人,名字来源于传说之下，但是本人还是云玩家。</p>
+              <p>项目文件来源于朱墨留白，之后会慢慢改造的。</p>
+              <p>至于我的介绍之后再补充吧。</p>
+
             </div>
+
+            <figure className="mt-10 overflow-hidden rounded-2xl border border-border/60 bg-surface-subtle shadow-sm">
+              <img
+                src="/radandwirte.jpg"
+                alt="红白墙面与两扇窗户"
+                className="aspect-video w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           </section>
 
         </div>

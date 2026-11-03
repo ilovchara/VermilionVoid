@@ -9,6 +9,7 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "check": "astro check",
+    "lint:hooks": "eslint src --ext .js,.jsx,.ts,.tsx",
     "sync-flomo": "node scripts/sync-flomo.mjs",
     "sync-studies": "node scripts/sync-studies.mjs"
   },
@@ -102,9 +103,12 @@
     "@types/react-dom": "^19",
     "@types/sanitize-html": "^2.16.0",
     "astro": "^7.3.1",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "postcss": "^8.5",
     "tailwindcss": "^4.3.3",
     "tw-animate-css": "1.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.72.1"
   }
 }
