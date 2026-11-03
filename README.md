@@ -21,7 +21,7 @@
 | 部署 | Vercel |
 | 评论系统 | 自托管的 Cloudflare Worker（见下） |
 
-包管理器是 **pnpm**。
+Node.js 使用 **24.x**，包管理器固定为 **pnpm 9.15.9**（见 `package.json`）。
 
 ## 快速开始
 
@@ -150,14 +150,17 @@ CI 需要的 secrets：`FEISHU_APP_ID`、`FEISHU_APP_SECRET`、`FEISHU_APP_TOKEN
 
 托管在 Vercel，配置见 `vercel.json`（构建命令、安全响应头、静态资源缓存策略）。
 
+Vercel 命令通过 `corepack pnpm` 读取 `package.json` 中固定的 pnpm 版本；Node.js 主版本由 `engines.node` 指定，无需额外设置 `ENABLE_EXPERIMENTAL_COREPACK`。
+
 需要在 Vercel 项目里配置的环境变量：
 
 | 变量 | 说明 |
 |---|---|
+| `PUBLIC_CWD_ENABLED` | 评论开关，默认关闭；设为 `true` 且配置 API 地址后才启用 |
 | `PUBLIC_CWD_API_BASE_URL` | 评论系统 API 地址。**留空则整个评论区不渲染** |
 | `PUBLIC_CWD_CUSTOM_CSS_URL` | 可选，评论组件的自定义样式表 |
 
-本地开发时把这两个写进 `.env`（已 gitignore），参考 `.env.example`。
+本地开发时把这些变量写进 `.env`（已 gitignore），参考 `.env.example`。之后启用评论时，设置 `PUBLIC_CWD_ENABLED=true` 和自己的 API 地址，并重新构建部署。
 
 ---
 

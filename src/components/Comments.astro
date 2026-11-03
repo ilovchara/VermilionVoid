@@ -1,7 +1,8 @@
 ---
 const apiBaseUrl = import.meta.env.PUBLIC_CWD_API_BASE_URL ?? ""
 const customCssUrl = import.meta.env.PUBLIC_CWD_CUSTOM_CSS_URL ?? ""
-const isEnabled = Boolean(apiBaseUrl)
+// 评论默认关闭；配置好后端后，显式设置 PUBLIC_CWD_ENABLED=true 再启用。
+const isEnabled = import.meta.env.PUBLIC_CWD_ENABLED === "true" && Boolean(apiBaseUrl)
 ---
 
 {isEnabled && (

@@ -3,6 +3,10 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -111,4 +115,8 @@
     "typescript": "^5",
     "typescript-eslint": "^8.72.1"
   }
+
+  
+
+
 }

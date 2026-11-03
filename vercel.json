@@ -1,7 +1,7 @@
 {
-  "buildCommand": "pnpm build",
-  "devCommand": "pnpm dev",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "corepack pnpm build",
+  "devCommand": "corepack pnpm dev",
+  "installCommand": "corepack pnpm install --frozen-lockfile",
   "outputDirectory": "dist",
   "headers": [
     {
