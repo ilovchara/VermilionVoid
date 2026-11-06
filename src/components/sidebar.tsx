@@ -42,7 +42,7 @@ export function Sidebar({
     <aside className="w-full lg:w-72 shrink-0 space-y-8">
       {/* Author Card */}
       <div className="bg-card border border-border/50 rounded-xl p-6 text-center">
-        <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/20">
+        <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/20">
           <img
             src={profile.avatar}
             alt={profile.name}

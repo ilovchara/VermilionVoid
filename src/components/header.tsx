@@ -64,7 +64,7 @@ export function Header() {
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-[1fr_auto_1fr] items-center">
           {/* Left: Logo */}
           <a href="/#home-main" data-astro-prefetch className="group flex items-center gap-3 justify-self-start">
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-primary/20 bg-secondary transition-transform duration-300 group-hover:scale-105">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-primary/20 bg-secondary transition-transform duration-300 group-hover:scale-105">
               <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover" />
             </div>
             <span className="text-foreground font-medium tracking-tight hidden sm:block">时歌的博客</span>

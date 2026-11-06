@@ -12,12 +12,12 @@ export default function AboutPage() {
             <div className="flex flex-col md:flex-row gap-10 items-start">
               {/* Avatar */}
               <div className="shrink-0">
-                <div className="w-36 h-36 rounded-2xl overflow-hidden border-2 border-border shadow-lg">
+                <div className="w-44 h-44 rounded-2xl overflow-hidden border-2 border-border shadow-lg">
                   <img
                     src={profile.avatar}
                     alt={profile.name}
-                    width={144}
-                    height={144}
+                    width={176}
+                    height={176}
                     loading="lazy"
                     className="object-cover w-full h-full"
                   />

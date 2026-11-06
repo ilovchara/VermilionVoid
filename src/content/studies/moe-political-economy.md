@@ -1,6 +1,6 @@
 ---
 slug: moe-political-economy
-title: 萌的政治经济学：他者即商品
+title: 事例专题
 status: 在读
 started: 2026-05
 subtitle: The Political Economy of Moe

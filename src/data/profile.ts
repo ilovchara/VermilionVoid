@@ -26,7 +26,7 @@ export const profile: {
 } = {
   name: "Chara",
   bio: "生命本身，就是没有意义的重复",
-  avatar: "/avatar.webp",
+  avatar: "/Chara.png",
   links: [
     {
       type: "wechat",
