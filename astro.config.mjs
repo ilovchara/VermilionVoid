@@ -12,6 +12,7 @@ import rehypeComponents from "rehype-components"
 import rehypeKatex from "rehype-katex"
 import rehypeSlug from "rehype-slug"
 import remarkDirective from "remark-directive"
+import remarkEmoji from "remark-emoji"
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives"
 import remarkMath from "remark-math"
 import remarkSectionize from "remark-sectionize"
@@ -96,6 +97,7 @@ export default defineConfig({
   markdown: {
     processor: unified(),
     remarkPlugins: [
+      remarkEmoji,
       remarkMath,
       remarkReadingTime,
       remarkExcerpt,
